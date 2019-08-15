@@ -1,0 +1,10 @@
+sylius:
+  form:
+    gateway_configuration:
+      paysera:
+        project_id: Projekto id
+          not_blank: Projekto id negali būti tuščias
+        sign_password: Projekto slaptažodis
+          not_blank: Projekto slaptažodis negali būti tuščias
+  payum_gateway_factory:
+    paysera: Paysera atsiskaitymas

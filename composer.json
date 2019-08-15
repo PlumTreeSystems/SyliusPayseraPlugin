@@ -1,5 +1,5 @@
 {
-    "name": "sylius/plugin-skeleton",
+    "name": "pts_sylius_paysera_plugin",
     "type": "sylius-plugin",
     "keywords": ["sylius", "sylius-plugin"],
     "description": "Acme example plugin for Sylius.",
@@ -44,7 +44,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Acme\\SyliusExamplePlugin\\": "src/",
+            "PTS\\SyliusPayseraPlugin\\": "src/",
             "Tests\\Acme\\SyliusExamplePlugin\\": "tests/"
         }
     },
