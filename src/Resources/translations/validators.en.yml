@@ -1,0 +1,7 @@
+sylius:
+  gateway_config:
+    paysera:
+      username:
+        not_blank: Project id can't be blank
+      password:
+        not_blank: Project password can't be blank

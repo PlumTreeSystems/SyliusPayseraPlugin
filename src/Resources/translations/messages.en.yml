@@ -3,9 +3,7 @@ sylius:
     gateway_configuration:
       paysera:
         project_id: Project id
-          not_blank: Project id cannot be blank
         sign_password: Project password
-          not_blank: Project password cannot be blank
+        test: Test mode
   payum_gateway_factory:
     paysera: Paysera checkout
-

@@ -1,0 +1,7 @@
+sylius:
+  gateway_config:
+    paysera:
+      username:
+        not_blank: Projekto id negali būti tuščias
+      password:
+        not_blank: Projekto slaptažodis negali būti tuščias

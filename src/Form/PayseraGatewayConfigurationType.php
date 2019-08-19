@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace PTS\SyliusPayseraPlugin\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -24,24 +25,23 @@ final class PayseraGatewayConfigurationType extends AbstractType
                 'label' => 'sylius.form.gateway_configuration.paysera.project_id',
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'sylius.form.gateway_configuration.paysera.username.not_blank',
+                        'message' => 'sylius.gateway_config.paysera.username.not_blank',
                         'groups' => 'sylius',
                     ]),
                 ],
             ])
             ->add('sign_password', PasswordType::class, [
                 'label' => 'sylius.form.gateway_configuration.paysera.sign_password',
+                'always_empty' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'sylius.form.gateway_configuration.paysera.password.not_blank',
+                        'message' => 'sylius.gateway_config.paysera.password.not_blank',
                         'groups' => 'sylius',
                     ]),
                 ],
             ])
-            ->add('type', HiddenType::class, [
-                'attr' => [
-                    'value' => 'Paysera',
-                ]
+            ->add('test', CheckboxType::class, [
+                'label' => 'sylius.form.gateway_configuration.paysera.test',
             ])
             ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
                 $data = $event->getData();
