@@ -42,7 +42,6 @@ default:
         - sylius.behat.context.ui.shop.checkout.thank_you
 
         - pts_sylius.context.ui.shop_paysera
-        - pts_sylius.context.ui.extended.page
 
       filters:
         tags: "@paying_with_paysera_during_checkout && @ui"

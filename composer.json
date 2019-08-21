@@ -1,7 +1,12 @@
 {
     "name": "plumtreesystems/sylius-paysera-plugin",
     "type": "sylius-plugin",
-    "keywords": ["sylius", "sylius-plugin", "paysera", "payum"],
+    "keywords": [
+        "sylius",
+        "sylius-plugin",
+        "paysera",
+        "payum"
+    ],
     "description": "This is a sylius plugin that implements the plumtreesystems/payum-paysera-gateway",
     "homepage": "https://github.com/PlumTreeSystems/SyliusPayseraPlugin",
     "license": "MIT",
@@ -53,7 +58,9 @@
         }
     },
     "autoload-dev": {
-        "classmap": ["tests/Application/Kernel.php"]
+        "classmap": [
+            "tests/Application/Kernel.php"
+        ]
     },
     "extra": {
         "branch-alias": {

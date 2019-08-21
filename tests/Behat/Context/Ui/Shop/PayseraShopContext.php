@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\PlumTreeSystems\SyliusSecureTradingPlugin\Behat\Context\Ui\Shop;
+namespace Tests\PTS\SyliusPayseraPlugin\Behat\Context\Ui\Shop;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;

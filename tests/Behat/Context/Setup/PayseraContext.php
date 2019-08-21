@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Tests\PTS\SyliusPayseraPlugin\comBehat\Context\Setup;
+namespace Tests\PTS\SyliusPayseraPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use Doctrine\Common\Persistence\ObjectManager;

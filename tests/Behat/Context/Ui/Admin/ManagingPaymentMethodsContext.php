@@ -2,7 +2,6 @@
 
 namespace Tests\PTS\SyliusPayseraPlugin\Behat\Context\Ui\Admin;
 
-
 use Behat\Behat\Context\Context;
 use Sylius\Behat\Page\Admin\PaymentMethod\CreatePageInterface;
 

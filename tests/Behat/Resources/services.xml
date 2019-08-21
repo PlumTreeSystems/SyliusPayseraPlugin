@@ -2,12 +2,11 @@
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <imports>
-        <import resource="services/contexts/setup.xml" />
-        <import resource="services/contexts/ui.xml" />
+        <import resource="services/**/*.xml"/>
     </imports>
     <services>
         <defaults public="true" autoconfigure="false" autowire="false"/>
-        <service id="pts_sylius_paysera_plugin.mocker" class="Tests\PTS\SyliusPayseraPlugin\Behat\Mocker\PayseraApiMocker">
+        <service id="pts_sylius_paysera_plugin.mocker" class="Tests\PTS\SyliusPayseraPlugin\Behat\Mocker\PayseraApiMocker" public="true">
             <argument type="service" id="sylius.behat.mocker" />
         </service>
     </services>
