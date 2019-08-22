@@ -27,10 +27,6 @@ class PayseraContext implements Context
      */
     private $paymentMethodExampleFactory;
     /**
-     * @var FactoryInterface
-     */
-    private $paymentMethodTranslationFactory;
-    /**
      * @var ObjectManager
      */
     private $paymentMethodManager;
@@ -39,21 +35,18 @@ class PayseraContext implements Context
      * @param SharedStorageInterface $sharedStorage
      * @param PaymentMethodRepositoryInterface $paymentMethodRepository
      * @param ExampleFactoryInterface $paymentMethodExampleFactory
-     * @param FactoryInterface $paymentMethodTranslationFactory
      * @param ObjectManager $paymentMethodManager
      */
     public function __construct(
         SharedStorageInterface $sharedStorage,
         PaymentMethodRepositoryInterface $paymentMethodRepository,
         ExampleFactoryInterface $paymentMethodExampleFactory,
-        FactoryInterface $paymentMethodTranslationFactory,
         ObjectManager $paymentMethodManager
     )
     {
         $this->sharedStorage = $sharedStorage;
         $this->paymentMethodRepository = $paymentMethodRepository;
         $this->paymentMethodExampleFactory = $paymentMethodExampleFactory;
-        $this->paymentMethodTranslationFactory = $paymentMethodTranslationFactory;
         $this->paymentMethodManager = $paymentMethodManager;
     }
 
