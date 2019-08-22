@@ -34,7 +34,6 @@ before_script:
     - (cd tests/Application && bin/console doctrine:schema:create -vvv)
     - (cd tests/Application && bin/console assets:install public -vvv)
     - (cd tests/Application && bin/console cache:warmup -vvv)
-    - (cd tests/Application && yarn install)
     - (cd tests/Application && yarn build)
 
     # Configure display
