@@ -12,10 +12,11 @@ Feature: Paying with Paysera during checkout
     And the store ships everywhere for free
     And I am logged in as "john@example.com"
 
-  @ui
+  @ui @mink:chrome
   Scenario: Successful payment
     Given I added product "PHP T-Shirt" to the cart
     And I have proceeded selecting "Paysera" payment method
     When I confirm my order with Paysera payment
     And I get redirected to Paysera and pay successfully
+    And I wait for confirmation
     Then I should be notified that my payment has been completed
