@@ -57,15 +57,6 @@ class PayseraShopContext extends MinkContext implements Context
         $this->summaryPage->confirmOrder();
     }
 
-    /**
-     * @When I get redirected to Paysera and pay successfully
-     */
-    public function iGetRedirectedToPayseraAndPaySuccessfully(): void
-    {
-        $this->payseraApiMocker->mockSuccessfulPayment(function () {
-            $this->paymentPage->pay();
-        });
-    }
 
     /**
      * @Given /^I wait for confirmation$/
