@@ -25,8 +25,23 @@ class ManagingPaymentMethodsContext implements Context
      * @Given /^I want to create a new Paysera payment method$/
      * @throws \FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException
      */
-    public function iWantToCreateANewSecureTradingPaymentMethod()
+    public function iWantToCreateANewPayseraPaymentMethod()
     {
         $this->createPage->open(['factory' => 'paysera']);
     }
+    /**
+     * @When I fill the Project id with :projectId
+     */
+    public function iConfigureItWithTestPayseraProjectId(string $projectId): void
+    {
+        $this->createPage->setPayseraProjectId($projectId);
+    }
+    /**
+     * @When I fill the Project password with :password
+     */
+    public function iConfigureItWithTestPayseraPassword(string $password): void
+    {
+        $this->createPage->setPayseraPassword($password);
+    }
+
 }

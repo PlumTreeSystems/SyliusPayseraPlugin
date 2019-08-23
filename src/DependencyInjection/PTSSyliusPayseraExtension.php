@@ -23,6 +23,7 @@ final class PTSSyliusPayseraExtension extends Extension
         $container->setParameter('gateway_factory_class',
             PayseraGatewayFactory::class
         );
+
         $loader->load('services.xml');
     }
 }

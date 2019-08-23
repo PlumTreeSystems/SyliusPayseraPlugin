@@ -3,13 +3,14 @@
 namespace Tests\PTS\SyliusPayseraPlugin\Behat\Context\Ui\Shop;
 
 use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
+use Behat\MinkExtension\Context\MinkContext;
 use Sylius\Behat\Page\Shop\Checkout\CompletePageInterface;
 use Sylius\Behat\Page\Shop\Order\ShowPageInterface;
 use Tests\PTS\SyliusPayseraPlugin\Behat\Mocker\PayseraApiMocker;
+use Tests\PTS\SyliusPayseraPlugin\Behat\Page\External\PayseraCheckoutPage;
 use Tests\PTS\SyliusPayseraPlugin\Behat\Page\JQueryHelper;
 
-class PayseraShopContext implements Context
+class PayseraShopContext extends MinkContext implements Context
 {
     /**
      * @var CompletePageInterface
@@ -25,19 +26,27 @@ class PayseraShopContext implements Context
     private $payseraApiMocker;
 
     /**
+     * @var PayseraCheckoutPage
+     */
+    private $paymentPage;
+
+    /**
      * @param CompletePageInterface $summaryPage
      * @param ShowPageInterface $orderDetails
      * @param PayseraApiMocker $payseraApiMocker
+     * @param PayseraCheckoutPage $paymentPage
      */
     public function __construct(
         CompletePageInterface $summaryPage,
         ShowPageInterface $orderDetails,
-        PayseraApiMocker $payseraApiMocker
+        PayseraApiMocker $payseraApiMocker,
+        PayseraCheckoutPage $paymentPage
     )
     {
         $this->summaryPage = $summaryPage;
         $this->orderDetails = $orderDetails;
         $this->payseraApiMocker = $payseraApiMocker;
+        $this->paymentPage = $paymentPage;
     }
 
     /**
@@ -46,5 +55,23 @@ class PayseraShopContext implements Context
     public function iConfirmMyOrderWithPayseraPayment()
     {
         $this->summaryPage->confirmOrder();
+    }
+
+    /**
+     * @When I get redirected to Paysera and pay successfully
+     */
+    public function iGetRedirectedToPayseraAndPaySuccessfully(): void
+    {
+        $this->payseraApiMocker->mockSuccessfulPayment(function () {
+            $this->paymentPage->pay();
+        });
+    }
+
+    /**
+     * @Given /^I wait for confirmation$/
+     */
+    public function iWaitForConfirmation()
+    {
+        JQueryHelper::waitForAsynchronousActionsToFinish($this->getSession());
     }
 }

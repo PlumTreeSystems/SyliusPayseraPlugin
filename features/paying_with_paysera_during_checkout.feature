@@ -1,4 +1,4 @@
-@paying_with_secure_trading_during_checkout
+@paying_with_paysera_during_checkout
 Feature: Paying with Paysera during checkout
   In order to buy products
   As a Customer
@@ -12,10 +12,10 @@ Feature: Paying with Paysera during checkout
     And the store ships everywhere for free
     And I am logged in as "john@example.com"
 
-  @ui @mink:chrome
+  @ui
   Scenario: Successful payment
     Given I added product "PHP T-Shirt" to the cart
     And I have proceeded selecting "Paysera" payment method
     When I confirm my order with Paysera payment
-    And I wait for confirmation
+    And I get redirected to Paysera and pay successfully
     Then I should be notified that my payment has been completed

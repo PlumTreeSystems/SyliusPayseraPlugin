@@ -18,6 +18,7 @@ final class Configuration implements ConfigurationInterface
         if (\method_exists($treeBuilder, 'getRootNode')) {
             $rootNode = $treeBuilder->getRootNode();
         } else {
+            // BC layer for symfony/config 4.1 and older
             $rootNode = $treeBuilder->root('pts_sylius_paysera_plugin');
         }
 

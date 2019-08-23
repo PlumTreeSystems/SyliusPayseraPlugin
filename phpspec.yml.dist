@@ -1,4 +1,4 @@
 suites:
     main:
-        namespace: PTS\SyliusPayseraPlugin
-        psr4_prefix: PTS\SyliusPayseraPlugin
+        namespace: Acme\SyliusExamplePlugin
+        psr4_prefix: Acme\SyliusExamplePlugin
