@@ -21,11 +21,11 @@ final class PayseraApiMocker
     }
     public function mockSuccessfulPayment(callable $action)
     {
-        $service = $this->mocker
-            ->mockCollaborator(Api::class);
-        $service->shouldReceive('doPayment');
-        $action();
-        $this->mocker->unmockAll();
+        //$service = $this->mocker
+        //    ->mockCollaborator(Api::class);
+        //$service->shouldReceive('doPayment');
+        //$action();
+        //$this->mocker->unmockAll();
 
     }
 }
