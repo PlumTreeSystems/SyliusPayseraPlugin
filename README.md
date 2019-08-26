@@ -1,4 +1,4 @@
-# Sylius Paysera Plugin ![travis](https://api.travis-ci.org/PlumTreeSystems/SyliusPayseraPlugin.svg?branch=master "Travis")
+# Sylius Paysera Plugin ![travis](https://api.travis-ci.org/PlumTreeSystems/SyliusPayseraPlugin.svg?branch=master "Travis") [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/PlumTreeSystems/SyliusPayseraPlugin/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/PlumTreeSystems/SyliusPayseraPlugin/?branch=master)
 
 This is a Sylius plugin for integrating paysera payments with `PlumTreeSystems/PayumPayseraGateway`
 
