@@ -8,7 +8,6 @@ use Sylius\Behat\Page\Shop\Checkout\CompletePageInterface;
 use Sylius\Behat\Page\Shop\Order\ShowPageInterface;
 use Tests\PTS\SyliusPayseraPlugin\Behat\Mocker\PayseraApiMocker;
 use Tests\PTS\SyliusPayseraPlugin\Behat\Page\External\PayseraCheckoutPage;
-use Tests\PTS\SyliusPayseraPlugin\Behat\Page\JQueryHelper;
 
 class PayseraShopContext extends MinkContext implements Context
 {
@@ -58,20 +57,13 @@ class PayseraShopContext extends MinkContext implements Context
     }
 
     /**
-     * @When I get redirected to Paysera and pay successfully
+     * @When I get redirected to Paysera
      */
-    public function iGetRedirectedToPayseraAndPaySuccessfully(): void
+    public function iGetRedirectedToPaysera(): void
     {
         $this->payseraApiMocker->mockSuccessfulPayment(function () {
             $this->paymentPage->pay();
         });
     }
 
-    /**
-     * @Given /^I wait for confirmation$/
-     */
-    public function iWaitForConfirmation()
-    {
-        JQueryHelper::waitForAsynchronousActionsToFinish($this->getSession());
-    }
 }
