@@ -6,6 +6,17 @@ This is a Sylius plugin for integrating paysera payments with `PlumTreeSystems/P
 
 Run `composer require plumtreesystems/sylius-paysera-plugin`.
 
+Add plugin dependencies to your bundles.php file:
+
+```php
+return [
+    PTS\SyliusPayseraPlugin\PTSSyliusPayseraPlugin::class => ['all' => true],
+];
+```
+Clear your project cache to enable translations:
+
+`php bin/console cache:clear`
+
 ## Usage
 
 Add your project configuration from inside the admin panel
