@@ -23,11 +23,20 @@ Add your project configuration from inside the admin panel
 
 For test payments, check the "Test mode" option
 
-Override your SyliusShopBundle templates to insert paysera logo to your shop
+Override your shop template to insert Paysera logo
 
-### Credits
+## Inserting Paysera logo to your shop
+
+Run `php bin/console assets:install public`
+
+Access image asset in twig template:
+
+`<img src="{{ asset('bundles/ptssyliuspayseraplugin/img/paysera.png') }}" alt="Paysera"/>`
+
+## Credits
 
 This package uses Paysera's library for integrating payments with Paysera
 
 https://bitbucket.org/paysera/libwebtopay/
+
 
