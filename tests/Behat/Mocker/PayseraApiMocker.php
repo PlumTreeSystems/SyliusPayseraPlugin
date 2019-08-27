@@ -4,6 +4,7 @@ namespace Tests\PTS\SyliusPayseraPlugin\Behat\Mocker;
 
 use Payum\Core\Model\Payment;
 use PTS\Paysera\Api;
+use PTS\Paysera\MockedApi;
 use Sylius\Behat\Service\Mocker\MockerInterface;
 
 final class PayseraApiMocker
@@ -21,11 +22,11 @@ final class PayseraApiMocker
     }
     public function mockSuccessfulPayment(callable $action)
     {
-        //$service = $this->mocker
-        //    ->mockCollaborator(Api::class);
-        //$service->shouldReceive('doPayment');
-        //$action();
-        //$this->mocker->unmockAll();
+        $service = $this->mocker
+            ->mockCollaborator(MockedApi::class);
+        $service->shouldReceive('doNotify');
+        $action();
+        $this->mocker->unmockAll();
 
     }
 }

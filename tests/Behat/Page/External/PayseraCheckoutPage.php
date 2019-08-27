@@ -7,6 +7,7 @@ use Behat\Mink\Session;
 use FriendsOfBehat\PageObjectExtension\Page\Page;
 use Payum\Core\Security\TokenInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Symfony\Component\BrowserKit\Client;
 
 
 final class PayseraCheckoutPage extends Page implements PayseraCheckoutPageInterface
@@ -14,21 +15,34 @@ final class PayseraCheckoutPage extends Page implements PayseraCheckoutPageInter
     /** @var RepositoryInterface */
     private $securityTokenRepository;
 
+    /** @var Client */
+    private $client;
+
     /**
      * @param array $parameters
      */
-    public function __construct(Session $session, $parameters, RepositoryInterface $securityTokenRepository)
+    public function __construct(Session $session, $parameters, RepositoryInterface $securityTokenRepository, Client $client)
     {
         parent::__construct($session, $parameters);
         $this->securityTokenRepository = $securityTokenRepository;
+        $this->client = $client;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function pay()
+    public function pay($data = [])
     {
-        $this->getDriver()->visit($this->findCaptureToken()->getTargetUrl());
+        $this->getDriver()->visit($this->findToken()->getTargetUrl() . '?' . http_build_query($data));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function notify(array $data): void
+    {
+        $notifyToken = $this->findToken('notify');
+        $this->client->request('GET', $notifyToken->getTargetUrl(), $data);
     }
 
     /**
@@ -36,7 +50,7 @@ final class PayseraCheckoutPage extends Page implements PayseraCheckoutPageInter
      */
     public function cancel()
     {
-        $this->getDriver()->visit($this->findCaptureToken()->getTargetUrl());
+        $this->getDriver()->visit($this->findToken()->getTargetUrl());
     }
 
     protected function getUrl(array $urlParameters = []): string
@@ -45,19 +59,23 @@ final class PayseraCheckoutPage extends Page implements PayseraCheckoutPageInter
     }
 
     /**
-     * @return TokenInterface
+     * @param string $type
      *
-     * @throws \RuntimeException
+     * @return TokenInterface
      */
-    private function findCaptureToken()
+    private function findToken(string $type = 'capture'): TokenInterface
     {
-        $tokens = $this->securityTokenRepository->findAll();
+        $tokens = [];
         /** @var TokenInterface $token */
-        foreach ($tokens as $token) {
-            if (strpos($token->getTargetUrl(), 'capture')) {
-                return $token;
+        foreach ($this->securityTokenRepository->findAll() as $token) {
+            if (strpos($token->getTargetUrl(), $type)) {
+                $tokens[] = $token;
             }
+        }
+        if (count($tokens) > 0) {
+            return end($tokens);
         }
         throw new \RuntimeException('Cannot find capture token, check if you are after proper checkout steps');
     }
+
 }

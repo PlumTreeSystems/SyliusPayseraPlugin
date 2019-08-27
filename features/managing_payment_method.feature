@@ -13,8 +13,8 @@ Feature: Adding a new Paysera payment method
     Given I want to create a new Paysera payment method
     When I name it "Paysera" in "English (United States)"
     And I specify its code as "paysera"
-    And I fill the Project id with "Project id"
-    And I fill the Project password with "Password"
+    And I fill the Project id with "testId"
+    And I fill the Project password with "testPassword"
     And I add it
     Then I should be notified that it has been successfully created
     And the payment method "Paysera" should appear in the registry

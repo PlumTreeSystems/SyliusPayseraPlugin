@@ -30,9 +30,8 @@ final class PayseraGatewayConfigurationType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('sign_password', PasswordType::class, [
+            ->add('sign_password', TextType::class, [
                 'label' => 'sylius.form.gateway_configuration.paysera.sign_password',
-                'always_empty' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'sylius.gateway_config.paysera.password.not_blank',

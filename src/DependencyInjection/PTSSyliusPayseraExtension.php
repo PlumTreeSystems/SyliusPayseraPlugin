@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PTS\SyliusPayseraPlugin\DependencyInjection;
 
+use PTS\Paysera\MockedPayseraGatewayFactory;
 use PTS\Paysera\PayseraGatewayFactory;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -20,8 +21,11 @@ final class PTSSyliusPayseraExtension extends Extension
         $this->processConfiguration($this->getConfiguration([], $container), $config);
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 
+        $env = $container->getParameter("kernel.environment");
+
         $container->setParameter('gateway_factory_class',
-            PayseraGatewayFactory::class
+            $env === 'test' ?
+                MockedPayseraGatewayFactory::class : PayseraGatewayFactory::class
         );
 
         $loader->load('services.xml');

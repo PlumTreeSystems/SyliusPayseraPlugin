@@ -57,13 +57,18 @@ class PayseraShopContext extends MinkContext implements Context
     }
 
     /**
-     * @When I get redirected to Paysera
+     * @When I get redirected to Paysera and complete my payment
      */
     public function iGetRedirectedToPaysera(): void
     {
         $this->payseraApiMocker->mockSuccessfulPayment(function () {
-            $this->paymentPage->pay();
+            $data = [
+                'data' => 'test',
+                'ss1' => 'test',
+                'ss2' => 'test'
+            ];
+            $this->paymentPage->notify($data);
+            $this->paymentPage->pay($data);
         });
     }
-
 }

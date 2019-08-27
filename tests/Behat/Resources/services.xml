@@ -20,6 +20,7 @@
 
         <service id="pts_sylius.page_checkout.external" class="Tests\PTS\SyliusPayseraPlugin\Behat\Page\External\PayseraCheckoutPage" parent="sylius.behat.page" public="true">
             <argument type="service" id="sylius.repository.payment_security_token" />
+            <argument type="service" id="test.client" />
         </service>
 
         <service id="pts_sylius.context.ui.admin.managing_payment_methods" class="Tests\PTS\SyliusPayseraPlugin\Behat\Context\Ui\Admin\ManagingPaymentMethodsContext" public="true">

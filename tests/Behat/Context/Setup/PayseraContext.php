@@ -62,8 +62,8 @@ class PayseraContext implements Context
             'Paysera'
         );
         $paymentMethod->getGatewayConfig()->setConfig([
-            'projectid' => 'test',
-            'sign_password' => 'test',
+            'projectid' => 'testId',
+            'sign_password' => 'testPassword',
             'test' => true,
         ]);
         $this->paymentMethodManager->flush();
