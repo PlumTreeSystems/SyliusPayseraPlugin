@@ -19,7 +19,7 @@
     "require": {
         "php": "^7.2",
         "plumtreesystems/payum-paysera-gateway": "^0.2.3",
-        "sylius/sylius": "^1.6@dev"
+        "sylius/sylius": "^1.5.3"
     },
     "require-dev": {
         "behat/behat": "^3.4",
