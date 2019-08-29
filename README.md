@@ -31,7 +31,9 @@ Run `php bin/console assets:install public`
 
 Access image asset in twig template:
 
-`<img src="{{ asset('bundles/ptssyliuspayseraplugin/img/paysera.png') }}" alt="Paysera"/>`
+```html
+<img src="{{ asset('bundles/ptssyliuspayseraplugin/img/paysera.png') }}" alt="Paysera"/>
+```
 
 ## Credits
 
