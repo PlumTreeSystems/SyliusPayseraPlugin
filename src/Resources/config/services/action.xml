@@ -10,6 +10,7 @@
         <service id="pts_sylius_paysera_plugin.action.capture"
                  class="PTS\SyliusPayseraPlugin\Action\CaptureAction"
         >
+            <argument>%gateway_api_class_mocked%</argument>
             <tag name="payum.action" factory="paysera" alias="payum.action.capture"/>
         </service>
     </services>

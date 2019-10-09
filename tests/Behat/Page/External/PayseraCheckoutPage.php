@@ -75,7 +75,7 @@ final class PayseraCheckoutPage extends Page implements PayseraCheckoutPageInter
         if (count($tokens) > 0) {
             return end($tokens);
         }
-        throw new \RuntimeException('Cannot find capture token, check if you are after proper checkout steps');
+        throw new \RuntimeException("Cannot find $type token, check if you are after proper checkout steps");
     }
 
 }
