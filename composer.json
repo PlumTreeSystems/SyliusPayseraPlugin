@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "php": "^7.2",
+        "php": "^7.2|^8.0,<8.3",
         "plumtreesystems/payum-paysera-gateway": "^0.3.3",
         "sylius/sylius": "^1.5.3",
         "whitecube/lingua": "^1.0"
